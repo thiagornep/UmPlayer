@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body{
@@ -30,10 +32,16 @@ body * {
     height: 100vh;
 }
 
+/*PLAYER 1*/
+
 #player-1{
     grid-area: A;
     padding: 51px 38px;
     width: fit-content;
+}
+
+#player-1 .wrapper{
+    width: 190px;
 }
 
 #player-1 img{
@@ -41,6 +49,12 @@ body * {
     height: 190px;
     object-fit: cover;
 }
+
+#player-1 .info{
+    margin-top: 28px;
+}
+
+/*PLAYER 2*/
 #player-2{
     grid-area: B;
 }
@@ -49,6 +63,8 @@ body * {
     height: 84px;
     object-fit: cover;
 }
+
+/*PLAYER 3*/
 #player-3{
     grid-area: C;
 }
@@ -57,11 +73,27 @@ body * {
     height: 84px;
     object-fit: cover;
 }
+
+/*Players Geral*/
+.info{
+    display: grid;
+    gap: 9.6px;
+}
+
 .player{
     background-color: #2A2141;
     padding: 28px;
+    border-radius: 10px;
 }
 
-#player-1 .wrapper{
-    width: 190px;
+.player h1 {
+    font-size: 24px;
+
 }
+
+.player h2 {
+    font-size: 19px;
+    opacity: 0.67;
+
+}
+
