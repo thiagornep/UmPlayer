@@ -62,11 +62,23 @@ body * {
 
 
 #player-2 .wrapper img{
-    dis
-    width: 84px;
-    height: 84px;
+    display: grid;
+    place-items: center;
+    width: 99px;
+    height: 99px;
+    margin: auto;
     object-fit: cover;
     border-radius: 6px;
+}
+
+#player-2 h2{
+    text-align: center;
+}
+
+#player-2 .controls-2{
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-evenly
 }
 
 /*PLAYER 3*/
@@ -143,14 +155,13 @@ cursor: not-allowed !important;
     font-weight: 700;
     width: 1.5rem;
     height: 1.5rem;
-    border-radius: 50%;
-    border: 2px solid #382e52;
-    display: ;
+    
+    border: none;
     cursor: pointer;
 }
 
 .controls-2 button svg{
-    width: 8px;
+    width: 15px;
 }
 
 /*BARRA DE PROGRESSO*/
