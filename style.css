@@ -59,7 +59,10 @@ body * {
 #player-2{
     grid-area: B;
 }
-#player-2 img{
+
+
+#player-2 .wrapper img{
+    dis
     width: 84px;
     height: 84px;
     object-fit: cover;
@@ -106,5 +109,79 @@ body * {
     margin-top: 29px;
     display: flex;
     justify-content: space-between;
-
 }
+
+
+.controls button {
+    color: #e1e1e6;
+    background-color: #2a2141;
+    font-weight: 700;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 2px solid #382e52;
+    cursor: pointer;
+}
+
+#pause svg {
+width: 1rem;
+}
+
+.hide {
+display: none;
+}
+
+button:disabled {
+opacity: 0.1;
+cursor: not-allowed !important;
+}  
+
+/*CONTROLE PLAYER2*/
+.controls-2 button{
+    color: #e1e1e6;
+    background-color: #2a2141;
+    font-weight: 700;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 2px solid #382e52;
+    display: ;
+    cursor: pointer;
+}
+
+.controls-2 button svg{
+    width: 8px;
+}
+
+/*BARRA DE PROGRESSO*/
+input {
+    width: 100%;
+  }
+
+#progress {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 1rem;
+  }
+  
+#time {
+    display: flex;
+    justify-content: space-between;
+  
+    color: #c4c4cc;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+
+
+
+  @keyframes scale-up-center {
+    0% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
