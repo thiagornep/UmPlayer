@@ -1,93 +1,91 @@
-const player = document.querySelector('main');
-const progress = document.querySelector('#progress');
-const buttonDecrement = document.querySelector('#decrement');
-const buttonPlay = document.querySelector('#play');
-const buttonPause = document.querySelector('#pause');
-const buttonIncrement = document.querySelector('#increment');
-const minutesDisplay = document.querySelector('#currentTime .minutes');
-const secondsDisplay = document.querySelector('#currentTime .seconds');
-const input = document.querySelector('input');
+const player = document.querySelector("main")
+const progress = document.querySelector("#progress")
+const buttonDecrement = document.querySelector("#decrement")
+const buttonPlay = document.querySelector("#play")
+const buttonPause = document.querySelector("#pause")
+const buttonIncrement = document.querySelector("#increment")
+const minutesDisplay = document.querySelector("#currentTime .minutes")
+const secondsDisplay = document.querySelector("#currentTime .seconds")
+const input = document.querySelector("input")
 
-const music = new Audio('./assets/feelgood.mp3');
-let totalMinutes;
-let totalSeconds;
+const music = new Audio("./assets/feelgood.mp3")
+let totalMinutes
+let totalSeconds
 
-let minutes = '00';
-let seconds = '00';
-const step = 5;
-let interval;
+let minutes = "00"
+let seconds = "00"
+const step = 5
+let interval
 
 function setMusicDuration() {
-
-  totalMinutes = Math.floor(music.duration / 60);
-  totalSeconds = Math.floor(music.duration - totalMinutes * 60);
-  document.querySelector('#totalTime .minutes').textContent = String(
+  totalMinutes = Math.floor(music.duration / 60)
+  totalSeconds = Math.floor(music.duration - totalMinutes * 60)
+  document.querySelector("#totalTime .minutes").textContent = String(
     totalMinutes
-  ).padStart(2, '0');
-  document.querySelector('#totalTime .seconds').textContent = String(
+  ).padStart(2, "0")
+  document.querySelector("#totalTime .seconds").textContent = String(
     totalSeconds
-  ).padStart(2, '0');
+  ).padStart(2, "0")
 
-  input.setAttribute('max', music.duration);
+  input.setAttribute("max", music.duration)
 }
 
 setTimeout(setMusicDuration, 500)
 
 function updateMusicTime(m, s) {
-  minutes = m || Math.trunc(music.currentTime / 60);
-  seconds = s || Math.floor(music.currentTime - minutes * 60);
+  minutes = m || Math.trunc(music.currentTime / 60)
+  seconds = s || Math.floor(music.currentTime - minutes * 60)
 
-  minutesDisplay.textContent = String(minutes).padStart(2, '0');
-  secondsDisplay.textContent = String(seconds).padStart(2, '0');
-  input.value = music.currentTime;
+  minutesDisplay.textContent = String(minutes).padStart(2, "0")
+  secondsDisplay.textContent = String(seconds).padStart(2, "0")
+  input.value = music.currentTime
   if (music.currentTime == music.duration) {
-    resetTimer();
-    pause();
+    resetTimer()
+    pause()
   }
 }
 
 function resetTimer() {
-  clearInterval(interval);
-  music.currentTime = 0;
-  updateMusicTime(0, 0);
+  clearInterval(interval)
+  music.currentTime = 0
+  updateMusicTime(0, 0)
 }
 
 function play() {
-  buttonPlay.classList.add('hide');
-  buttonPause.classList.remove('hide');
-  music.play();
+  buttonPlay.classList.add("hide")
+  buttonPause.classList.remove("hide")
+  music.play()
 
-  interval = setInterval(updateMusicTime, 1000);
+  interval = setInterval(updateMusicTime, 1000)
 }
 
 function pause() {
-  buttonPause.classList.add('hide');
-  buttonPlay.classList.remove('hide');
-  music.pause();
-  clearTimeout(interval);
+  buttonPause.classList.add("hide")
+  buttonPlay.classList.remove("hide")
+  music.pause()
+  clearTimeout(interval)
 }
 
-input.addEventListener('input', () => {
-  music.currentTime = input.value;
-  updateMusicTime();
-});
+input.addEventListener("input", () => {
+  music.currentTime = input.value
+  updateMusicTime()
+})
 
-buttonPlay.addEventListener('click', play);
-buttonPause.addEventListener('click', pause);
+buttonPlay.addEventListener("click", play)
+buttonPause.addEventListener("click", pause)
 
-buttonDecrement.addEventListener('click', () => {
-  music.currentTime -= step;
-  updateMusicTime();
-  buttonIncrement.disabled = false;
-});
+buttonDecrement.addEventListener("click", () => {
+  music.currentTime -= step
+  updateMusicTime()
+  buttonIncrement.disabled = false
+})
 
-buttonIncrement.addEventListener('click', () => {
+buttonIncrement.addEventListener("click", () => {
   if (music.currentTime + step > music.duration) {
-    resetTimer();
-    pause();
+    resetTimer()
+    pause()
   } else {
-    music.currentTime += step;
-    updateMusicTime();
+    music.currentTime += step
+    updateMusicTime()
   }
-});
-
+})
